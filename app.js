@@ -23,9 +23,10 @@ function shuffle(a)
 
 $("#button").click(function(){
 
+
   personnes = shuffle(personnes);
   $(".per").remove();
-  for(var position = personnes.length-1; position >=0; position--){
+  for(var position = personnes.length-1; position >= 0; position--){
     $( $('table tr').get(position+1) ).append('<td class="per">'+personnes[position]+'</td>');
   }
 
@@ -34,4 +35,25 @@ $("#button").click(function(){
 
       
 });
+
+$.ajax({
+
+url : 'http://192.168.1.131:3000/name',
+  
+  success : function(data){
+
+  personnes = data.name;
+    console.log(data);
+    console.log('success');
+  },
+
+  error : function(error){
+    console.log('error');
+
+  },
+
+});
+       
+
+
 
