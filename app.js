@@ -31,29 +31,52 @@ $("#button").click(function(){
   }
 
 
-  console.log(personnes);
+  //console.log(personnes);
 
       
-});
 
-$.ajax({
-
-url : 'http://192.168.1.131:3000/name',
+  $.ajax({ 
+    url:'http://192.168.1.50/json-db',
+     data: { 
+      task: 'set', 
+      key: 'Mouad', 
+      value: JSON.stringify(personnes),
+    } 
   
-  success : function(data){
+  });
 
-  personnes = data.name;
-    console.log(data);
-    console.log('success');
-  },
-
-  error : function(error){
-    console.log('error');
-
-  },
+  $.ajax({
+  url:'http://192.168.1.50/json-db',
+  data: {
+    task: 'get',
+    key: 'Mouad'
+    },
+   success: function(data){
+     console.log(data);
+   }
+  });
 
 });
-       
 
+
+
+// $.ajax({
+
+// url : 'http://192.168.1.131:3000/name',
+  
+//   success : function(data){
+
+//   personnes = data.name;
+//     console.log(data);
+//     console.log('success');
+//   },
+
+//   error : function(error){
+//     console.log('error');
+
+//   },
+
+// });
+       
 
 
